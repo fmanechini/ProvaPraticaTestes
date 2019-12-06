@@ -1,4 +1,4 @@
-CREATE TABLE `cadastro`.`cliente` 
+CREATE TABLE `cadastro`.`colecionavel` 
   ( 
      `id`               INT(11) NOT NULL auto_increment PRIMARY KEY, 
      `nome`             VARCHAR(255), 
