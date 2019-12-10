@@ -9,13 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>CLIENTES</title>
+    <title>Itens Colecionáveis</title>
   </head>
   <body>
-  <h1>Tela Inicial</h1>
+  <h1>Home</h1>
 		<hr>
-		<a href="templates/cadastro.php"><input type="submit" value="Cadastro de Clientes"></a><br>
-		<a href="templates/lista.php"><input type="submit" value="Lista de Clientes"></a><br>		
+		<a href="templates/cadastro.php"><input type="submit" value="Cadastro de Colecionáveis"></a><br>
+		<a href="templates/lista.php"><input type="submit" value="Lista de Colecionáveis"></a><br>		
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
