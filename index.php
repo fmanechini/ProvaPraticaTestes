@@ -12,6 +12,25 @@
     <title>Itens Colecionáveis</title>
   </head>
   <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<div class="container">
+  <a class="navbar-brand" href="../index.php" style="flex-grow: 1">Início</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content : flex-end">
+    
+    <form class="form-inline my-2 my-lg-0" style="width :80%; margin:1px" >
+    <div class="col" style=>
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    </div>
+  </div>
+  </div>
+</nav>
+ 
   <h1>Home</h1>
 		<hr>
 		<a href="templates/cadastro.php"><input type="submit" value="Cadastro de Colecionáveis"></a><br>
