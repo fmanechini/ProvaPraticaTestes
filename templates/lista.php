@@ -1,7 +1,7 @@
 <?php
-include 'db.php';
-$sql = "SELECT * FROM colecionavel ORDER BY  id";
-$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+	include 'db.php';
+	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.idColecionavel = cd.idColecionador ORDER BY cv.idColecionavel";
+	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,14 +14,14 @@ $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Lista de Colecionáveis</title>
-</head>
-<body>
-<div class="container" style="margin-top:35px;">
-    <h1>Lista de Colecionáveis</h1>
-    <hr>
+	<title>Lista de Colecionáveis</title>
+  </head>
+  <body>
+    <div class="container" style="margin-top:35px;">
+		<h1>Lista de Colecionáveis</h1>
+		<hr>
     <table border="3" width="100%" class="table">
-        <tr>
+			<tr>
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">Tipo</th>
@@ -31,28 +31,19 @@ $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
             <th scope="col">Quantidade</th>
             <th scope="col">Deletar</th>
             <th scope="col">Editar</th>
-        </tr>
-        <?php while ($dados = mysqli_fetch_assoc($con)) { ?>
-            <tbody>
-            <tr>
-                <td><?php echo $dados['id']; ?></td>
-                <td><?php echo $dados['nome']; ?></td>
-                <td><?php echo $dados['tipo']; ?></td>
-                <td><?php echo $dados['tempo']; ?></td>
-                <td><?php echo $dados['id_colecionador']; ?></td>
-                <td><?php echo $dados['detalhes']; ?></td>
-                <td><?php echo $dados['quantidade']; ?></td>
-                <td>
-                    <center><a href="del.php?id=<?php echo $dados['id'] ?>"><input class="btn btn-dark" type="submit"
-                                                                                   value="DELETAR"></a></center>
-                </td>
-                <td>
-                    <center><a href="atualizar.php?id=<?php echo $dados['id'] ?>"><input class="btn btn-dark"
-                                                                                         type="submit"
-                                                                                         value="EDITAR"></a>
-                    </center>
-                </td>
-
+			</tr>
+		<?php while($dados = mysqli_fetch_assoc($con)) { ?>
+           <tbody>
+				<tr>
+					<td><?php echo $dados['idColecionavel']; ?></td>
+					<td><?php echo $dados['nome']; ?></td>
+					<td><?php echo $dados['tipo']; ?></td>
+					<td><?php echo $dados['tempo']; ?></td>
+					<td><?php echo $dados['nome_completo']; ?></td>
+					<td><?php echo $dados['detalhes']; ?></td>
+					<td><?php echo $dados['quantidade']; ?></td>
+					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="DELETAR"></a></center></td>
+					<td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="EDITAR"></a></center></td>
             </tr>
             </tbody>
         <?php } ?>
