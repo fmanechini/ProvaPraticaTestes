@@ -1,4 +1,5 @@
 <?php
+
 	include 'db.php';
 	// Query para selecionar o item que se deseja editar no banco de dados
 	$sql = "SELECT * FROM colecionavel WHERE idcolecionavel=$_GET[id]";
@@ -7,43 +8,49 @@
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
+	<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<title>Atualizar Cliente</title>
 	</head>
 	<body>
+    <div class="container" style="margin-top:35px;">
 		<h1>Atualizar Cliente</h1>
 		<hr>
 			<!-- quando enviar o form, ele executa a função de validação antes de fazer o submit -->
 			<form method="post" name="cadastro" onsubmit="event.preventDefault(); validacao();">
 			<div id="add_to_me"></div>
 				<?php if($dados = mysqli_fetch_array($con)) { ?>
-				<table>
-					<tr>
-						<td>Nome:</td>
-						<td><input type="text" name="nome" value=<?php echo $dados['nome']; ?>></td>
-					</tr>
-					<tr>
-						<td>Tipo:</td>
-						<td><input type="text" name="tipo" value=<?php echo $dados['tipo']; ?>></td>
-					</tr>
-					<tr>
-						<td>Tempo:</td>
-						<td><input type="text" name="tempo" value=<?php echo $dados['tempo']; ?>></td>
-					</tr>
-					<tr>
-						<td>Proprietário:</td>
-						<td><input type="text" name="id_colecionador" value=<?php echo $dados['id_colecionador']; ?>></td>
-					</tr>
-					<tr>
-						<td>Detalhes:</td>
-						<td><input type="text" name="detalhes" value=<?php echo $dados['detalhes']; ?>></td>
-					</tr>
-					<tr>
-						<td>Quantidade:</td>
-						<td><input type="text" name="quantidade" value=<?php echo $dados['quantidade']; ?>></td>
-					</tr>
-				</table>
+        <div class="form-group">
+        <label>Nome:</label>
+        <input type="text" class="form-control" placeholder="" name="nome" value=<?php echo $dados['nome']; ?>>
+    </div>
+    <div class="form-group">
+        <label>Tipo:</label>
+        <input type="select" class="form-control" placeholder="" name="tipo" value=<?php echo $dados['tipo']; ?>>
+    </div>
+    <div class="form-group">
+        <label>Tempo (em meses):</label>
+        <input type="int" class="form-control" placeholder="" value=<?php echo $dados['tempo']; ?>>
+    </div>
+    <div class="form-group">
+        <label>Proprietário:</label>
+        <input type="select" class="form-control" placeholder="" name="id_colecionador" value=<?php echo $dados['id_colecionador']; ?>>
+    </div>
+
+    <div class="form-group">
+        <label>Detalhes:</label>
+        <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1" placeholder="Insira os detalhes do seu colecionavel" rows="3" value=<?php echo $dados['detalhes']; ?>></textarea>
+    </div>
+    <div class="form-group">
+        <label>Quantidade:</label>
+        <input type="int" name="quantidade" class="form-control" placeholder="" value=<?php echo $dados['quantidade']; ?>>
+    </div>
 
 				<?php
 					if (!empty($_POST['nome'])and($_POST['tipo'])and($_POST['tempo'])and($_POST['id_colecionador'])and($_POST['detalhes'])and($_POST['quantidade'])){
@@ -61,11 +68,13 @@
 				}
 				?>
 				
-				
-				<input type="submit" value="Atualizar">
-				<?php } ?>
-			</form>
-		<a href="lista.php"><input type="submit" value="voltar"></a>
+				    <input type="submit" class="btn btn-primary btn-lg" value="Atualizar">
+        <?php } ?>
+    </form>
+		<a href="lista.php"><input type="submit" value="voltar" class="btn btn-secondary btn-lg"></a>
+
+</div>
+    
 		<script type="text/javascript">
         // função para conferir se um valor é um numero inteiro usada para validacao dos forms
         function isInt(value) {
