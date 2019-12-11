@@ -16,11 +16,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<title>Atualizar Cliente</title>
+		<title>Atualizar Colecionável</title>
 	</head>
 	<body>
     <div class="container" style="margin-top:35px;">
-		<h1>Atualizar Cliente</h1>
+		<h1>Atualizar Colecionável</h1>
 		<hr>
 			<!-- quando enviar o form, ele executa a função de validação antes de fazer o submit -->
 			<form method="post" name="cadastro" onsubmit="event.preventDefault(); validacao();">
@@ -32,11 +32,16 @@
     </div>
     <div class="form-group">
         <label>Tipo:</label>
-        <input type="select" class="form-control" placeholder="" name="tipo" value=<?php echo $dados['tipo']; ?>>
+        <select class="form-control" name="tipo">
+            <option value=<?php echo $dados['tipo']; ?> selected disabled hidden><?php echo $dados['tipo']; ?></option>
+            <option value="Objeto">Objeto</option>
+            <option value="Camiseta">Camiseta</option>
+            <option value="Quadrinhos">Quadrinhos</option>
+        </select>
     </div>
     <div class="form-group">
         <label>Tempo (em meses):</label>
-        <input type="int" class="form-control" placeholder="" value=<?php echo $dados['tempo']; ?>>
+        <input type="int" class="form-control" placeholder="" name="tempo" value=<?php echo $dados['tempo']; ?>>
     </div>
     <div class="form-group">
         <label>Proprietário:</label>
@@ -45,7 +50,7 @@
 
     <div class="form-group">
         <label>Detalhes:</label>
-        <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1" placeholder="Insira os detalhes do seu colecionavel" rows="3" value=<?php echo $dados['detalhes']; ?>></textarea>
+        <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1" placeholder="Insira os detalhes do seu colecionavel" rows="3"><?php echo $dados['detalhes']; ?></textarea>
     </div>
     <div class="form-group">
         <label>Quantidade:</label>

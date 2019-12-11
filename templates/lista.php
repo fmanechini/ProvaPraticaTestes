@@ -1,6 +1,6 @@
 <?php
 	include 'db.php';
-	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.idColecionavel = cd.idColecionador ORDER BY cv.idColecionavel";
+	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador ORDER BY cv.idColecionavel";
 	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 ?>
 <!doctype html>

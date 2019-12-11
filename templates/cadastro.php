@@ -15,9 +15,9 @@ include 'db.php';
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 <div class="container">
-  <a class="navbar-brand" href="#" style="flex-grow: 1">Navbar</a>
+  <a class="navbar-brand" href="../index.php" style="flex-grow: 1">Início</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,7 +27,7 @@ include 'db.php';
     <form class="form-inline my-2 my-lg-0" style="width :80%; margin:1px" >
     <div class="col" style=>
       <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
     </div>
   </div>
@@ -47,21 +47,30 @@ include 'db.php';
     </div>
     <div class="row" style="width :80%; margin:auto">
         <label>Tipo:</label>
-        <input type="select" class="form-control" placeholder="Insira o tipo do seu colecionavel" name="tipo">
+        <select class="form-control" name="tipo">
+            <option value="" selected disabled hidden>Selecione o tipo do seu colecionavel</option>
+            <option value="Objeto">Objeto</option>
+            <option value="Camiseta">Camiseta</option>
+            <option value="Quadrinhos">Quadrinhos</option>
+        </select>
     </div>
     <div class="row" style="width :80%; margin:auto">
         <label>Tempo (em meses):</label>
-        <input type="int" class="form-control" placeholder="Insira a idade do seu item">
+        <input type="int" class="form-control" placeholder="Insira a idade do seu item" name="tempo">
+    </div>
+    <div class="row" style="width :80%; margin:auto">
+        <label>Proprietário:</label>
+        <input type="select" class="form-control" placeholder="" name="id_colecionador">
+    </div>
+
+    <div class="row" style="width :80%; margin:auto">
+        <label>Detalhes:</label>
+        <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1" placeholder="Insira os detalhes do seu colecionavel" rows="3"></textarea>
     </div>
 
     <div class="row" style="width :80%; margin:auto">
         <label>Quantidade:</label>
         <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade do seu item">
-    </div>
-    <div class="row" style="width :80%; margin:auto">
-        <label>Detalhes:</label>
-        <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1"
-                  placeholder="Insira os detalhes do seu colecionavel" rows="3"></textarea>
     </div>
 
     <div class="row" style="width :80%; margin: 20px auto">
@@ -71,7 +80,7 @@ include 'db.php';
     </form>
 
         <div class="col">
-            <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="voltar"></a>
+            <a href="../index.php" class="btn btn-secondary btn-lg">Voltar</a>
         </div>
     </div>
 </div>
@@ -148,5 +157,7 @@ include 'db.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+    </script>
    </body>
 </html>
