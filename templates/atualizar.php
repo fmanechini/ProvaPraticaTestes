@@ -1,7 +1,7 @@
 <?php
 	include 'db.php';
-	
-	$sql = "SELECT * FROM colecionavel WHERE id=$_GET[id]";
+	// Query para selecionar o item que se deseja editar no banco de dados
+	$sql = "SELECT * FROM colecionavel WHERE idcolecionavel=$_GET[id]";
 	
   	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 ?>
@@ -14,6 +14,7 @@
 	<body>
 		<h1>Atualizar Cliente</h1>
 		<hr>
+			<!-- quando enviar o form, ele executa a função de validação antes de fazer o submit -->
 			<form method="post" name="cadastro" onsubmit="event.preventDefault(); validacao();">
 			<div id="add_to_me"></div>
 				<?php if($dados = mysqli_fetch_array($con)) { ?>
@@ -53,8 +54,8 @@
                         $detalhes = $_POST['detalhes'];
                         $quantidade 	= $_POST['quantidade'];
 						$id = $_GET['id'];
-						$sql = mysqli_query($conexao,"UPDATE colecionador SET nome='$nome', tipo='$tipo', tempo='$tempo', id_colecionador='$id_colecionador', detalhes='$detalhes', quantidade='$quantidade'WHERE id=".$id);
-						header("Location: http://localhost/crud/templates/lista.php");
+						$sql = mysqli_query($conexao,"UPDATE colecionavel SET nome='$nome', tipo='$tipo', tempo='$tempo', id_colecionador='$id_colecionador', detalhes='$detalhes', quantidade='$quantidade'WHERE idcolecionavel=".$id);
+						header("Location: http://localhost/provapraticatestes/templates/lista.php");
 						//adiciona uma mensagem de sucesso quando o cadastro é realizado com sucesso
 						echo "<script>document.getElementById('add_to_me').innerHTML = \"<div class='alert alert-success' role='alert'> Cadastro Realizado com Sucesso</div>\"</script>";
 				}

@@ -1,6 +1,6 @@
 <?php
 	include 'db.php';
-	$sql = "SELECT * FROM colecionavel ORDER BY  id";
+	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.idColecionavel = cd.idColecionador ORDER BY cv.idColecionavel";
 	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 ?>
 <!doctype html>
@@ -33,15 +33,15 @@
 			</tr>
 		<?php while($dados = mysqli_fetch_assoc($con)) { ?>
 				<tr>
-					<td><?php echo $dados['id']; ?></td>
+					<td><?php echo $dados['idColecionavel']; ?></td>
 					<td><?php echo $dados['nome']; ?></td>
 					<td><?php echo $dados['tipo']; ?></td>
 					<td><?php echo $dados['tempo']; ?></td>
-					<td><?php echo $dados['id_colecionador']; ?></td>
+					<td><?php echo $dados['nome_completo']; ?></td>
 					<td><?php echo $dados['detalhes']; ?></td>
 					<td><?php echo $dados['quantidade']; ?></td>
-					<td><center><a href="del.php?id=<?php echo $dados['id'] ?>"><input type="submit" value="x"></a></center></td>
-					<td><center><a href="atualizar.php?id=<?php echo $dados['id'] ?>"><input type="submit" value="editar"></a></center></td>
+					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input type="submit" value="x"></a></center></td>
+					<td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input type="submit" value="editar"></a></center></td>
 
 				</tr>
 				

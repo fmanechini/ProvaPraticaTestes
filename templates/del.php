@@ -4,6 +4,6 @@
 ?>
 <?php
 	$id = $_GET['id'];
-	$sql = mysqli_query($conexao, "DELETE FROM colecionavel WHERE id=".$id);
-	header("Location: http://localhost/crud/templates/lista.php");
+	$sql = mysqli_query($conexao, "DELETE FROM colecionavel WHERE idcolecionavel=".$id);
+	header("Location: http://localhost/provapraticatestes/templates/lista.php");
 ?>
