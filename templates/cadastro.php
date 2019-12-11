@@ -17,38 +17,64 @@ include 'db.php';
 </head>
 
 <body>
-<div class="container" style="margin-top:35px;">
-    <h1>Cadastro de Colecionáveis</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+  <a class="navbar-brand" href="#" style="flex-grow: 1">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content : flex-end">
+    
+    <form class="form-inline my-2 my-lg-0" style="width :80%; margin:1px" >
+    <div class="col" style=>
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
+  </div>
+  </div>
+</nav>
+<div class="container" style="margin-top:35px;">
+
+
+
+    <h1>Cadastro de Colecionáveis</h1>
+    <form>
     <hr>
-    <div class="form-group">
+    <div class="row" style="width :80%; margin:auto">
         <label>Nome:</label>
         <input type="text" class="form-control" placeholder="Insira seu nome" name="nome">
     </div>
-    <div class="form-group">
+    <div class="row" style="width :80%; margin:auto">
         <label>Tipo:</label>
         <input type="select" class="form-control" placeholder="Insira o tipo do seu colecionavel" name="tipo">
     </div>
-    <div class="form-group">
+    <div class="row" style="width :80%; margin:auto">
         <label>Tempo (em meses):</label>
         <input type="int" class="form-control" placeholder="Insira a idade do seu item">
     </div>
 
-    <div class="form-group">
+    <div class="row" style="width :80%; margin:auto">
         <label>Quantidade:</label>
         <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade do seu item">
     </div>
-    <div class="form-group">
+    <div class="row" style="width :80%; margin:auto">
         <label>Detalhes:</label>
         <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1"
                   placeholder="Insira os detalhes do seu colecionavel" rows="3"></textarea>
     </div>
 
-
-    <input type="submit" class="btn btn-primary btn-lg" value="Salvar">
+    <div class="row" style="width :80%; margin: 20px auto">
+        <div class="col">
+        <input type="submit" class="btn btn-primary btn-lg" value="Salvar">
+        </div>
     </form>
-    <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="voltar"></a>
 
+        <div class="col">
+            <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="voltar"></a>
+        </div>
+    </div>
 </div>
 <?php //inserindo as informações do cliente no banco de dados.
 if (!empty($_POST['nome']) and ($_POST['tipo']) and ($_POST['tempo']) and ($_POST['id_colecionador']) and ($_POST['detalhes']) and ($_POST['quantidade'])) {
