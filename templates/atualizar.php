@@ -3,8 +3,15 @@
 	include 'db.php';
 	// Query para selecionar o item que se deseja editar no banco de dados
 	$sql = "SELECT * FROM colecionavel WHERE idcolecionavel=$_GET[id]";
-	
-  	$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    $dados = mysqli_fetch_array($con);
+    $sql_opcao = "SELECT * FROM colecionador WHERE idcolecionador=$dados[id_colecionador]";
+    $con_opcao = mysqli_query($conexao, $sql_opcao) or die(mysqli_error($conexao));
+    $dados_opcao = mysqli_fetch_array($con_opcao);
+
+    $sql_colecionador = "SELECT idcolecionador, nome_completo FROM colecionador";
+    $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_error($conexao));
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,15 +51,15 @@
 			<!-- quando enviar o form, ele executa a função de validação antes de fazer o submit -->
 			<form method="post" name="cadastro" onsubmit="event.preventDefault(); validacao();">
 			<div id="add_to_me"></div>
-				<?php if($dados = mysqli_fetch_array($con)) { ?>
+				<?php if($dados) { ?>
         <div class="form-group">
-        <label>Nome:</label>
+        <label>Nome do Colecionável:</label>
         <input type="text" class="form-control" placeholder="" name="nome" value=<?php echo $dados['nome']; ?>>
     </div>
     <div class="form-group">
         <label>Tipo:</label>
         <select class="form-control" name="tipo">
-            <option value=<?php echo $dados['tipo']; ?> selected disabled hidden><?php echo $dados['tipo']; ?></option>
+            <option value="<?php echo $dados['tipo']; ?>" selected hidden><?php echo $dados['tipo']; ?></option>
             <option value="Objeto">Objeto</option>
             <option value="Camiseta">Camiseta</option>
             <option value="Quadrinhos">Quadrinhos</option>
@@ -64,7 +71,12 @@
     </div>
     <div class="form-group">
         <label>Proprietário:</label>
-        <input type="select" class="form-control" placeholder="" name="id_colecionador" value=<?php echo $dados['id_colecionador']; ?>>
+        <select class="form-control" name="id_colecionador">
+        <option value=<?php echo $dados_opcao['idColecionador']; ?> selected hidden><?php echo $dados_opcao['nome_completo']; ?></option>
+        <?php while($dados_colecionador = mysqli_fetch_assoc($con_colecionador)) { ?>
+            <option value=<?php echo $dados_colecionador['idcolecionador']; ?>><?php echo $dados_colecionador['nome_completo']; ?></option>
+	    <?php } ?>
+        </select>
     </div>
 
     <div class="form-group">
@@ -73,7 +85,7 @@
     </div>
     <div class="form-group">
         <label>Quantidade:</label>
-        <input type="int" name="quantidade" class="form-control" placeholder="" value=<?php echo $dados['quantidade']; ?>>
+        <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade de itens" value=<?php echo $dados['quantidade']; ?>>
     </div>
 
 				<?php
@@ -84,7 +96,7 @@
                         $id_colecionador = $_POST['id_colecionador'];
                         $detalhes = $_POST['detalhes'];
                         $quantidade 	= $_POST['quantidade'];
-						$id = $_GET['id'];
+                        $id = $_GET['id'];
 						$sql = mysqli_query($conexao,"UPDATE colecionavel SET nome='$nome', tipo='$tipo', tempo='$tempo', id_colecionador='$id_colecionador', detalhes='$detalhes', quantidade='$quantidade'WHERE idcolecionavel=".$id);
 						header("Location: http://localhost/provapraticatestes/templates/lista.php");
 						//adiciona uma mensagem de sucesso quando o cadastro é realizado com sucesso

@@ -1,5 +1,8 @@
 <?php
 include 'db.php';
+
+$sql = "SELECT idcolecionador, nome_completo FROM colecionador";
+$con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 ?>
 
 <!doctype html>
@@ -42,13 +45,13 @@ include 'db.php';
 		<div id="add_to_me"></div>
       
       <div class="row" style="width :80%; margin:auto">
-        <label>Nome:</label>
-        <input type="text" class="form-control" placeholder="Insira seu nome" name="nome">
+        <label>Nome do Colecionável:</label>
+        <input type="text" class="form-control" placeholder="Insira o nome do colecionável" name="nome">
     </div>
     <div class="row" style="width :80%; margin:auto">
         <label>Tipo:</label>
         <select class="form-control" name="tipo">
-            <option value="" selected disabled hidden>Selecione o tipo do seu colecionavel</option>
+            <option value="" selected disabled hidden>Selecione o tipo</option>
             <option value="Objeto">Objeto</option>
             <option value="Camiseta">Camiseta</option>
             <option value="Quadrinhos">Quadrinhos</option>
@@ -60,7 +63,12 @@ include 'db.php';
     </div>
     <div class="row" style="width :80%; margin:auto">
         <label>Proprietário:</label>
-        <input type="select" class="form-control" placeholder="" name="id_colecionador">
+        <select class="form-control" name="id_colecionador">
+        <option value="" selected disabled hidden>Selecione o proprietário</option>
+        <?php while($dados = mysqli_fetch_assoc($con)) { ?>
+            <option value=<?php echo $dados['idcolecionador']; ?>><?php echo $dados['nome_completo']; ?></option>
+	    <?php } ?>
+        </select>
     </div>
 
     <div class="row" style="width :80%; margin:auto">
@@ -70,7 +78,7 @@ include 'db.php';
 
     <div class="row" style="width :80%; margin:auto">
         <label>Quantidade:</label>
-        <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade do seu item">
+        <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade de itens">
     </div>
 
     <div class="row" style="width :80%; margin: 20px auto">
