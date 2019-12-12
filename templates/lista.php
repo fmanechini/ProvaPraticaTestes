@@ -1,7 +1,24 @@
 <?php
 	include 'db.php';
+	if (isset($_POST['busca'])) {
+		switch($_POST['tipo_busca']) {
+			case 'nome':
+        $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.nome) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
+        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			break;
+			case 'tipo':
+				$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.tipo) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
+        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			break;
+			case 'proprietario':
+				$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cd.nome_completo) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
+        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+		}
+	}
+	else {
 	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador ORDER BY cv.idColecionavel";
-	$con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+  $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,7 +55,16 @@
  
     <div class="container" style="margin-top:35px;">
 		<h1>Lista de Colecionáveis</h1>
-		<hr>
+    <hr>
+      <?php if(isset($_POST['busca'])) {
+        if( mysqli_num_rows($con) == 0) {
+          echo "<div class='alert alert-danger' role='alert'>Não foi encontrado nenhum colecionável</div>";
+        }
+        else {
+          echo "<div class='alert alert-primary' role='alert'>A busca pelo termo " .$_POST['busca']." retornou os seguintes colecionáveis</div>";        
+        }
+      }
+      ?>
     <table border="3" width="100%" class="table">
 			<tr>
             <th scope="col">Id</th>
@@ -48,7 +74,7 @@
             <th scope="col">Proprietário</th>
             <th scope="col">Detalhes</th>
             <th scope="col">Quantidade</th>
-            <th scope="col">Deletar</th>
+            <th scope="col">Apagar</th>
             <th scope="col">Editar</th>
 			</tr>
 		<?php while($dados = mysqli_fetch_assoc($con)) { ?>
@@ -61,14 +87,14 @@
 					<td><?php echo $dados['nome_completo']; ?></td>
 					<td><?php echo $dados['detalhes']; ?></td>
 					<td><?php echo $dados['quantidade']; ?></td>
-					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="DELETAR"></a></center></td>
-					<td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="EDITAR"></a></center></td>
+					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="Apagar"></a></center></td>
+					<td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="Editar"></a></center></td>
             </tr>
             </tbody>
         <?php } ?>
     </table>
-
-    <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="voltar"></a>
+    <a href="../templates/busca.php"><input type="submit" class="btn btn-secondary btn-lg" value="Buscar Colecionável"></a>
+    <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="Voltar"></a>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

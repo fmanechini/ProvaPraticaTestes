@@ -14,7 +14,7 @@ $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>CADASTRO</title>
+    <title>Cadastro de Colecionáveis</title>
 </head>
 
 <body>
@@ -132,10 +132,20 @@ $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
                 document.getElementsByName("nome")[0].focus();
                 return false;
             }
+            if (document.getElementsByName("tipo")[0].value == "") {
+                document.getElementById("add_to_me").innerHTML = "<div class='alert alert-danger' role='alert'>Selecione um tipo</div>";
+                document.getElementsByName("tipo")[0].focus();
+                return false;
+            }
             // Validação do tempo conferindo se é um numero inteiro
             if (!isInt(document.getElementsByName("tempo")[0].value)) {
                 document.getElementById("add_to_me").innerHTML = "<div class='alert alert-danger' role='alert'> O tempo deve ser um número inteiro</div>";
                 document.getElementsByName("tempo")[0].focus();
+                return false;
+            }
+            if (document.getElementsByName("id_colecionador")[0].value == "") {
+                document.getElementById("add_to_me").innerHTML = "<div class='alert alert-danger' role='alert'>Selecione um proprietário</div>";
+                document.getElementsByName("id_colecionador")[0].focus();
                 return false;
             }
             // Validacao dos detalhes verificando se possui pelo menos 3 caracteres
