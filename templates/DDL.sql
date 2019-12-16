@@ -1,6 +1,4 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
 
 CREATE TABLE IF NOT EXISTS `cadastro`.`Colecionador` (
   `idColecionador` INT NOT NULL AUTO_INCREMENT,
@@ -10,12 +8,9 @@ CREATE TABLE IF NOT EXISTS `cadastro`.`Colecionador` (
   `celular` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `CPF` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idColecionador`),
-  UNIQUE INDEX `idColecionador_UNIQUE` (`idColecionador` ASC) VISIBLE,
-  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
-  )
-ENGINE = InnoDB;
+  PRIMARY KEY (`idColecionador`)
+);
+
 
 CREATE TABLE IF NOT EXISTS `cadastro`.`Colecionavel` (
   `idColecionavel` INT NOT NULL AUTO_INCREMENT,
@@ -26,16 +21,8 @@ CREATE TABLE IF NOT EXISTS `cadastro`.`Colecionavel` (
   `detalhes` VARCHAR(300) NOT NULL,
   `quantidade` INT NOT NULL,
   PRIMARY KEY (`idColecionavel`),
-  UNIQUE INDEX `idColecionavel_UNIQUE` (`idColecionavel` ASC) VISIBLE,
-  INDEX `id_colecionador_idx` (`id_colecionador` ASC) VISIBLE,
   CONSTRAINT `id_colecionador`
     FOREIGN KEY (`id_colecionador`)
-    REFERENCES `dbcolecionaveis`.`Colecionador` (`idColecionador`)
+    REFERENCES `cadastro`.`Colecionador` (`idColecionador`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+    ON UPDATE NO ACTION);
