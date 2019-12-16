@@ -21,12 +21,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content : flex-end">
     
-    <form class="form-inline my-2 my-lg-0" style="width :80%; margin:1px" >
-    <div class="col" style=>
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
-    </div>
+    <a class="navbar-brand" href="templates/cadastro.php">Cadastrar</a>
+    <a class="navbar-brand" href="templates/lista.php">Listar</a>
+    <a class="navbar-brand" href="templates/busca.php">Buscar</a>
+
   </div>
   </div>
 </nav>

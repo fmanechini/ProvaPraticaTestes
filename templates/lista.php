@@ -1,24 +1,8 @@
 <?php
 	include 'db.php';
-	if (isset($_POST['busca'])) {
-		switch($_POST['tipo_busca']) {
-			case 'nome':
-        $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.nome) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
-        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-			break;
-			case 'tipo':
-				$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.tipo) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
-        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-			break;
-			case 'proprietario':
-				$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cd.nome_completo) LIKE UPPER('" .$_POST['busca']. "%') ORDER BY cv.idColecionavel";
-        $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-		}
-	}
-	else {
-	$sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador ORDER BY cv.idColecionavel";
-  $con = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-  }
+  include 'funcoesphp.php';
+  
+  $con = busca_lista_db($_POST,$conexao);
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,12 +27,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content : flex-end">
     
-    <form class="form-inline my-2 my-lg-0" style="width :80%; margin:1px" >
-    <div class="col" style=>
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
-    </div>
+    <a class="navbar-brand" href="../templates/cadastro.php">Cadastrar</a>
+    <a class="navbar-brand" href="../templates/lista.php">Listar</a>
+    <a class="navbar-brand" href="../templates/busca.php">Buscar</a>
+
   </div>
   </div>
 </nav>
@@ -74,8 +56,8 @@
             <th scope="col">Proprietário</th>
             <th scope="col">Detalhes</th>
             <th scope="col">Quantidade</th>
-            <th scope="col">Apagar</th>
             <th scope="col">Editar</th>
+            <th scope="col">Apagar</th>     
 			</tr>
 		<?php while($dados = mysqli_fetch_assoc($con)) { ?>
            <tbody>
@@ -86,15 +68,21 @@
 					<td><?php echo $dados['tempo']; ?></td>
 					<td><?php echo $dados['nome_completo']; ?></td>
 					<td><?php echo $dados['detalhes']; ?></td>
-					<td><?php echo $dados['quantidade']; ?></td>
-					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="Apagar"></a></center></td>
-					<td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-dark" type="submit" value="Editar"></a></center></td>
+          <td><?php echo $dados['quantidade']; ?></td>
+          <td><center><a href="atualizar.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-primary" type="submit" value="Editar"></a></center></td>
+					<td><center><a href="del.php?id=<?php echo $dados['idColecionavel'] ?>"><input class="btn btn-danger" type="submit" value="Apagar"></a></center></td>
             </tr>
             </tbody>
         <?php } ?>
     </table>
-    <a href="../templates/busca.php"><input type="submit" class="btn btn-secondary btn-lg" value="Buscar Colecionável"></a>
-    <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="Voltar"></a>
+    <div class="row" style="width :80%; margin: 20px auto; min-width: 400px">
+        <div class="col">
+    <a href="../templates/busca.php"><input type="submit" class="btn btn-primary btn-lg" value="Buscar Colecionável" style="margin-bottom: 20px"></a>
+    </div>
+    <div class="col">
+    <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="Voltar" style="margin-bottom: 20px"></a>
+    </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
