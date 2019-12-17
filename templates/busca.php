@@ -58,15 +58,11 @@ include 'db.php';
           <label class="custom-control-label" for="radio_proprietario">Proprietário</label>
         </div>
     </div>
-    <div class="row" style="width :80%; margin: 20px auto">
-        <div class="col">
+    
+    <div class="row justify-content-between" style="width :80%; margin: 20px auto">
         <input type="submit" class="btn btn-primary btn-lg" value="Buscar">
-        </div>
     </form>
-
-        <div class="col">
             <a href="../index.php" class="btn btn-secondary btn-lg">Voltar</a>
-        </div>
     </div>
 </div>
     <!-- Optional JavaScript -->

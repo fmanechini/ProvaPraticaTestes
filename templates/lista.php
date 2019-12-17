@@ -86,16 +86,17 @@
             </tbody>
             <?php } ?>
         </table>
-    </div>
-    <div class="row" style="width :80%; margin: 20px auto; min-width: 400px">
-        <div class="col">
+    
+    <div class="row justify-content-between" style="width :100%; margin: 20px auto">
+
             <a href="../templates/busca.php"><input type="submit" class="btn btn-primary btn-lg"
                     value="Buscar Colecionável" style="margin-bottom: 20px"></a>
-        </div>
-        <div class="col">
+
+
             <a href="../index.php"><input type="submit" class="btn btn-secondary btn-lg" value="Voltar"
                     style="margin-bottom: 20px"></a>
-        </div>
+
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

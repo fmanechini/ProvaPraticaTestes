@@ -17,7 +17,7 @@
     
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container">
-                <a class="navbar-brand" href="../index.php" style="flex-grow: 1">Início</a>
+                <a class="navbar-brand" href="index.php" style="flex-grow: 1">Início</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -34,27 +34,27 @@
             </div>
         </nav>
         <div class="container" style="margin-top:35px;">
-        <div class="row">
-            <h1>Bem vindo</h1>
+        <div class="row" >
+            <h1 style="margin-left: 20px">Bem vindo</h1>
         </div>
         <div class="row">
             <img src="https://image.freepik.com/vetores-gratis/modelo-de-design-do-logotipo-do-geek_7492-36.jpg"
                 style="width:300px; margin: auto" />
         </div>
 
-        <div class="row" style="width :80%; margin: 20px auto">
+        <div class="row justify-content-between" style="width : 80%; margin: 20px auto; min-width: 320px">
 
             <a href="templates/cadastro.php"><input type="submit" value="Cadastro"
-                    class="btn btn-primary btn-lg btn-block"></a>
+                    class="btn btn-primary btn-lg btn-block" style="min-width: 100px"></a>
 
 
 
             <a href="templates/lista.php"><input type="submit" value="Lista "
-                    class="btn btn-primary btn-lg btn-block"></a>
+                    class="btn btn-primary btn-lg btn-block" style="min-width: 100px"></a>
 
 
             <a href="templates/busca.php"><input type="submit" value="Busca"
-                    class="btn btn-primary btn-lg btn-block"></a>
+                    class="btn btn-primary btn-lg btn-block" style="min-width: 100px"></a>
 
         </div>
         <!-- Optional JavaScript -->

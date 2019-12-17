@@ -52,11 +52,11 @@ $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_erro
         <form method="post" name="cadastro" onsubmit="event.preventDefault(); validacao();">
             <div id="add_to_me"></div>
             <?php if ($dados) { ?>
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Nome do Colecionável*:</label>
                     <input type="text" class="form-control" placeholder="" name="nome" value='<?php echo $dados['nome']; ?>'>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Tipo*:</label>
                     <select class="form-control" name="tipo">
                         <option value="<?php echo $dados['tipo']; ?>" selected hidden><?php echo $dados['tipo']; ?></option>
@@ -65,11 +65,11 @@ $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_erro
                         <option value="Quadrinhos">Quadrinhos</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Tempo (em meses)*:</label>
                     <input type="int" class="form-control" placeholder="" name="tempo" value=<?php echo $dados['tempo']; ?>>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Proprietário*:</label>
                     <select class="form-control" name="id_colecionador">
                         <option value=<?php echo $dados_opcao['idColecionador']; ?> selected hidden><?php echo $dados_opcao['nome_completo']; ?></option>
@@ -79,11 +79,11 @@ $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_erro
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Detalhes*:</label>
                     <textarea class="form-control" name="detalhes" id="exampleFormControlTextarea1" placeholder="Insira os detalhes do seu colecionavel" rows="3"><?php echo $dados['detalhes']; ?></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="width :80%; margin:auto">
                     <label>Quantidade*:</label>
                     <input type="int" name="quantidade" class="form-control" placeholder="Insira a quantidade de itens" value=<?php echo $dados['quantidade']; ?>>
                 </div>
@@ -91,15 +91,12 @@ $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_erro
                 <?php
                     salvar_atualizacao($_POST, $conexao,$_GET);
                     ?>
-                <div class="row" style="width :80%; margin: 20px auto">
-                    <div class="col">
+                <div class="row justify-content-between" style="width :80%; margin: 20px auto">
+
                         <input type="submit" class="btn btn-primary btn-lg" value="Atualizar">
-                    </div>
                 <?php } ?>
         </form>
-        <div class="col">
             <a href="lista.php" class="btn btn-secondary btn-lg">Voltar</a>
-        </div>
     </div>
 
     </div>
