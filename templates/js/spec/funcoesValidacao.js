@@ -172,12 +172,12 @@ describe("funcoesValidacao", function() {
         });
 
         it("CT006 - teste com o radio tipo selecionado", function () {
-            document.getElementById('radio_nome').checked = true;
+            document.getElementById('radio_tipo').checked = true;
             expect(validacao_busca()).toEqual(true);
         });
 
         it("CT007 - teste com o radio proprietário selecionado", function () {
-            document.getElementById('radio_nome').checked = true;
+            document.getElementById('radio_proprietario').checked = true;
             expect(validacao_busca()).toEqual(true);
         });
 
