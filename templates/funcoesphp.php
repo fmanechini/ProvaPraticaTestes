@@ -11,6 +11,7 @@ function salvar_cadastro($array, $conexao)
         $detalhes = $array['detalhes'];
         $quantidade = $array['quantidade'];
         $erro = 0;
+        var_dump($array);
         $sql = mysqli_query($conexao, "INSERT INTO colecionavel(nome, tipo, tempo, id_colecionador, detalhes, quantidade)
                     VALUES('$nome','$tipo', '$tempo', '$id_colecionador', '$detalhes', '$quantidade')");
         //header("Location: http://localhost/crud/templates/lista.php");

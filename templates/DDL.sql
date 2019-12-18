@@ -1,12 +1,14 @@
 
-CREATE TABLE `cadastro`.`collectors` (
+CREATE DATABASE IF NOT EXISTS `cadastro`;
+
+CREATE TABLE IF NOT EXISTS `cadastro`.`collectors` (
     `registration` INT(99) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `fullName` VARCHAR(60) NOT NULL,
     `birthDay` DATE NOT NULL,
     `phone` VARCHAR(11) NOT NULL,
     `email` VARCHAR(30) NOT NULL UNIQUE,
     `cpf` VARCHAR(11) NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE IF NOT EXISTS `cadastro`.`Colecionavel` (
   `idColecionavel` INT NOT NULL AUTO_INCREMENT,
