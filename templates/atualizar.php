@@ -7,11 +7,11 @@ $sql = "SELECT * FROM colecionavel WHERE idcolecionavel=$_GET[id]";
 $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 $dados = mysqli_fetch_array($con);
-$sql_opcao = "SELECT * FROM colecionador WHERE idcolecionador=$dados[id_colecionador]";
+$sql_opcao = "SELECT * FROM collectors WHERE registration=$dados[id_colecionador]";
 $con_opcao = mysqli_query($conexao, $sql_opcao) or die(mysqli_error($conexao));
 $dados_opcao = mysqli_fetch_array($con_opcao);
 
-$sql_colecionador = "SELECT idcolecionador, nome_completo FROM colecionador";
+$sql_colecionador = "SELECT registration, fullName FROM collectors";
 $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_error($conexao));
 ?>
 <!DOCTYPE html>
@@ -72,9 +72,9 @@ $con_colecionador = mysqli_query($conexao, $sql_colecionador) or die(mysqli_erro
                 <div class="form-group" style="width :80%; margin:auto">
                     <label>Proprietário*:</label>
                     <select class="form-control" name="id_colecionador">
-                        <option value=<?php echo $dados_opcao['idColecionador']; ?> selected hidden><?php echo $dados_opcao['nome_completo']; ?></option>
+                        <option value=<?php echo $dados_opcao['registration']; ?> selected hidden><?php echo $dados_opcao['fullName']; ?></option>
                         <?php while ($dados_colecionador = mysqli_fetch_assoc($con_colecionador)) { ?>
-                            <option value=<?php echo $dados_colecionador['idcolecionador']; ?>><?php echo $dados_colecionador['nome_completo']; ?></option>
+                            <option value=<?php echo $dados_colecionador['registration']; ?>><?php echo $dados_colecionador['fullName']; ?></option>
                         <?php } ?>
                     </select>
                 </div>

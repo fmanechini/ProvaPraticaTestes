@@ -71,7 +71,7 @@
                     <td><?php echo $dados['nome']; ?></td>
                     <td><?php echo $dados['tipo']; ?></td>
                     <td><?php echo $dados['tempo']; ?></td>
-                    <td><?php echo $dados['nome_completo']; ?></td>
+                    <td><?php echo $dados['fullName']; ?></td>
                     <td><?php echo $dados['detalhes']; ?></td>
                     <td><?php echo $dados['quantidade']; ?></td>
                     <td>

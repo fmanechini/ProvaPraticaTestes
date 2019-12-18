@@ -2,7 +2,7 @@
 include 'db.php';
 include 'funcoesphp.php';
 
-$sql = "SELECT idcolecionador, nome_completo FROM colecionador";
+$sql = "SELECT registration, fullName FROM collectors";
 $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 ?>
 
@@ -66,7 +66,7 @@ $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
         <select class="form-control" name="id_colecionador">
           <option value="" selected disabled hidden>Selecione o proprietário</option>
           <?php while ($dados = mysqli_fetch_assoc($con)) { ?>
-            <option value=<?php echo $dados['idcolecionador']; ?>><?php echo $dados['nome_completo']; ?></option>
+            <option value=<?php echo $dados['registration']; ?>><?php echo $dados['fullName']; ?></option>
           <?php } ?>
         </select>
       </div>

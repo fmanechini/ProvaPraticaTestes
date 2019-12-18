@@ -47,20 +47,20 @@ function busca_lista_db($array, $conexao)
     if (isset($_POST['busca'])) {
         switch ($_POST['tipo_busca']) {
             case 'nome':
-                $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.nome) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
+                $sql = "SELECT * FROM colecionavel cv INNER JOIN collectors cd ON cv.id_colecionador = cd.registration WHERE UPPER(cv.nome) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
                 $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
                 break;
             case 'tipo':
-                $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cv.tipo) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
+                $sql = "SELECT * FROM colecionavel cv INNER JOIN collectors cd ON cv.id_colecionador = cd.registration WHERE UPPER(cv.tipo) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
                 $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
                 break;
             case 'proprietario':
-                $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador WHERE UPPER(cd.nome_completo) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
+                $sql = "SELECT * FROM colecionavel cv INNER JOIN collectors cd ON cv.id_colecionador = cd.registration WHERE UPPER(cd.fullName) LIKE UPPER('" . $_POST['busca'] . "%') ORDER BY cv.idColecionavel";
                 $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
         }
         return $con;
     } else {
-        $sql = "SELECT * FROM colecionavel cv INNER JOIN colecionador cd ON cv.id_colecionador = cd.idColecionador ORDER BY cv.idColecionavel";
+        $sql = "SELECT * FROM colecionavel cv INNER JOIN collectors cd ON cv.id_colecionador = cd.registration ORDER BY cv.idColecionavel";
         $con = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
         return $con;
     }
